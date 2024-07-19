@@ -24,31 +24,22 @@ function render(element, container) {
 /**
  * concurrent：将 render 拆分成多个子 units
  * 当一个 unit 完成后，浏览器可以选择打断渲染，处理优先级更高的事务（e.g. input）
- * 从而避免全部递归造成主线程长时间阻塞
+ * 从而避免主线程长时间阻塞
  */
-let nextUnitOfWork = null;
+let nextUnitOfWork = null
 
 function workLoop(deadline) {
-    let shouldYield = false;
+    let shouldYield = false
+    // 还在执行当前单元，不 yield 的时候
     while (nextUnitOfWork && !shouldYield) {
         nextUnitOfWork = performUnitOfWork(
             nextUnitOfWork
         )
-
-        // deadline 是 requestIdleCallback 传递的参数
-        // 检查距离浏览器再次控制前的剩余时间
-        shouldYield = deadline.timeRemaining() < 1;
+        // 时间差不多了，准备下班！！！
+        shouldYield = deadline.timeRemaining() < 1
     }
 
-    requestIdleCallback(workLoop);
+    requestIdleCallback(workLoop) // 想下班？开干！
 }
 
-requestIdleCallback(workLoop);
-
-// Fiber
-// 执行当前的 render unit 并返回下一个 unit
-function performUnitOfWork(nextUnitOfWork) {
-
-}
-
-export default render;
+function performUnitOfWork(nextUnitOfWork) {}
