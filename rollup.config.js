@@ -1,3 +1,5 @@
+import commonjs from "@rollup/plugin-commonjs";
+import nodeResolve from "@rollup/plugin-node-resolve";
 import { babel } from "@rollup/plugin-babel";
 
 export default {
@@ -8,6 +10,16 @@ export default {
         sourcemap: true
     },
     plugins: [
-        babel({babelHelpers: "bundled"})
+        // resolve node modules path import
+        nodeResolve(),
+        commonjs({ 
+            // make sure commonjs plugin only process node modules
+            include: ['node_modules/**']
+        }),
+        babel({
+            babelHelpers: "bundled",
+            exclude: "node_modules/**",
+            extensions: ['.js', '.jsx']
+        })
     ]
 };

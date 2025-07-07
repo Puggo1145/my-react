@@ -54,7 +54,7 @@ function createElement(type, config, children) {
     // implementation...
     return {
         // A mark for a React component
-        $$typeof: REACT_ELEMENT_TYPE,
+        $$typeof: REACT_ELEMENT,
         // type of current component: html tag, className, function name, special marks
         type: type,
         // key in React
