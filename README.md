@@ -145,16 +145,14 @@ pause, reuse and end work.
 
 In React 15, the reconcile process requires recursive reactElement function
 call. The overall process is synchronous and not interruptable. The time
-consumed by the reconciler can be very long especially when there are a large
+consumed by the reconciler can be very long especially when there is a large
 number of elements, causing a block in the main thread.
 
-Very unfortunately, the JS execution and browser rendering is serial, which
+Very unfortunately, the JS execution and browser rendering are serial, which
 means the end users cannot see any changes on their screen until the js
 execution is finished. So developers introduced **Fiber** to solve this problem.
 
-The main idea of fiber is very plain: since we cannot control the JS execution
-and browser rendering directly, how about we **split our rendering tasks into
-small units and make them interruptable**.
+The main idea of fiber is very plain: since we cannot control the JS execution and browser rendering directly, how about we **split our rendering tasks into small units and make them interruptable**.
 
 For example, a user wants to input something into a textarea, but there is also
 a very heavy rendering task needs to be executed at the same time. With fiber,
@@ -168,10 +166,11 @@ automatically based on the current situation.
 - **tree pointers**: child, sibling, return
 - **state**: pendingProps, memoizedProps, memoizedState, updateQueue
 - **side effects**: flags, subtreeFlags, deletions
-- **priority**：lanes, childlanes, ...\
-  ...\
-  That's a lot, but we don't have to understand everything for now. Let's break
-  them down step by step. \
+- **priority**：lanes, childlanes, ...
+
+  ...
+  
+That's a lot, but we don't have to understand everything for now. Let's break them down step by step.
 
 ### 2.3 A fiber node
 
