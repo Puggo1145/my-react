@@ -34,7 +34,6 @@ function createFiber(tag, pendingProps, key) {
     return new FiberNode(tag, pendingProps, key);
 }
 
-// fiber is created from react element, we need to convert it first
 function createFiberFromElement(element) {
     const {type, props, key} = element;
     
@@ -59,7 +58,7 @@ function createFiberFromElement(element) {
     return fiberNode;
 }
 
-// react also handles text node separately
+// react also handles text node separately for better performance and readability
 function createFiberFromText(text) {
     return FiberNode(HostText, text, null);
 }
@@ -75,15 +74,6 @@ function createHostRootFiber() {
 // createWorkInProgress is a implementation of "Double Buffering" mechanism
 // It creates or reuses a workInProgress fiber node for any node update
 // without affecting current fiber tree on the screen
-
-// react makes two fiber tree at the same time
-// 1. current fiber: the mounted fiber tree
-// 2. workInProgress fiber: the fiber tree under construction during the update process
-// the two fiber is connected with an "alternative" pointer
-
-// since there are fiber nodes that can be directly reused, 
-// this can save some meories and lower the pressure of GC
-
 function createWorkInProgress(current, pendingProps) {
     let workInProgress = current.alternative;
     // create one if there is no workInProgress fiber node.
