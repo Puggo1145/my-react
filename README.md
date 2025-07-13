@@ -1,6 +1,13 @@
-# My React
+# ⚛️ My React
 
-Core source code of React.js
+Core source code reimplementation of React.js. Understand your buddy who fights by your side.
+
+## Update Plan
+1. React Element ✅
+2. Fiber ✍️
+3. ...
+
+upcoming: initial rendering
 
 ## 1. Basic Rendering Process
 
