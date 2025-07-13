@@ -261,12 +261,11 @@ function createFiberFromText(text) {
 }
 ```
 
-Text in DOM has different behavior to other nodes. It only contains pure texts,
-and it has No attributes, events or child nodes.\
-Also, updating a text node only contains changes in texts. No need for events,
-child nodes diff, etc.\
-There are more differences, but now we know that handling text node separately
-is good for performance and complexity.
+Text in DOM has different behavior to other nodes. It only contains pure texts, and it has no attributes, events or child nodes.
+
+Also, updating a text node only contains changes in texts. No need for events, child nodes diff, etc.
+
+There are more differences, but now we know that handling text node separately is good for performance and complexity.
 
 - createHostRootFiber
 
@@ -289,8 +288,8 @@ finished.
 
 For that, React often keeps 2 fiber trees in the memory at the same time.
 
-- current tree: the fiber tree represents current UI shown to the user
-- workInProgress tree: the fiber tree used to calculate the next update during
+- **current tree**: the fiber tree represents current UI shown to the user
+- **workInProgress tree**: the fiber tree used to calculate the next update during
   the rendering process
 
 Nodes on the two trees are correspondingly connected by a property called:
@@ -335,3 +334,5 @@ function createWorkInProgress(current, pendingProps) {
     return workInProgress;
 }
 ```
+
+upcomming: initial rendering
