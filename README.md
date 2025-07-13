@@ -75,7 +75,7 @@ function createElement(type, config, children) {
 }
 ```
 
-for example, a ReactElement might look like this
+for example, a ReactElement might looks like this
 
 ```javascript
 // HTML tag -> ReactElement:
@@ -137,7 +137,7 @@ You can see that a ReactElement is basically a javascript object.
 
 ## 2. Fiber
 
-React Fiber is a new reconciler introduced in React 16, designed especially for
+React Fiber is a big update for reconciler introduced in React 16, designed especially for
 incremental rendering. It breaks rendering into multiple work units, allowing to
 pause, reuse and end work.
 
