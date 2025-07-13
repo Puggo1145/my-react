@@ -5,7 +5,7 @@ import { babel } from "@rollup/plugin-babel";
 export default {
     input: "src/index.js",
     output: {
-        file: "public/bundle.js",
+        file: "dist/bundle.js",
         format: "iife",
         sourcemap: true
     },
@@ -13,7 +13,7 @@ export default {
         // resolve node modules path import
         nodeResolve(),
         commonjs({ 
-            // make sure commonjs plugin only process node modules
+            // make sure commonjs plugin only processes node modules
             include: ['node_modules/**']
         }),
         babel({

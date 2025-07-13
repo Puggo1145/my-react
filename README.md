@@ -125,3 +125,17 @@ const element = <App title="hello" />
 
 You can see that a ReactElement is basically a javascript object.
 > refer to **react.js** for the source code of **React.createElement()**
+
+## 2. Fiber
+React Fiber is a new reconciler introduced in React 16, designed especially for incremental rendering. It breaks rendering into multiple work units, allowing to pause, reuse and end work. 
+### 2.1 The problem of synchronous rendering blocking
+In React 15, the reconcile process requires recursive reactElement function call. The overall process is synchronous and not interruptable. The time consumed by the reconciler can be very long especially when there are a large number of elements, causing a block in the main thread. \
+Very unfortunately, the JS execution and browser rendering is serial, which means the end users cannot see any changes on their screen until the js execution is finished. So developers introduced **Fiber** to solve this problem.
+### 2.2 What do we have on a fiber node
+- **basic attributes**: tag, type, props, keys, ...
+- **tree pointers**: child, sibling, return
+- **state**: pendingProps, memoizedProps, memoizedState, updateQueue
+- **side effects**: flags, subtreeFlags, deletions
+- **priority**：lanes, childlanes, ...\
+...\
+That's a lot, but we don't have to understand everything for now. Let's break them down step by step.
